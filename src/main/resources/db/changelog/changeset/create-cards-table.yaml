@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-cards
+      author: Vsevolod
+      changes:
+        - createTable:
+            tableName: cards
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: card_number
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: owner_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_cards_owner_id
+                    references: users(id)
+                    nullable: false
+              - column:
+                  name: expiration_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: numeric(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            tableName: cards
+            columnNames: card_number
+            constraintName: uk_cards_card_number

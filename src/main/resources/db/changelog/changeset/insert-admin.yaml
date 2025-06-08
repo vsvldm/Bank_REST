@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-admin
+      author: Vsevolod
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: "admin"
+              - column:
+                  name: password
+                  value: "$2a$10$uPe./yiWRqEYEJ8n9ypTZOjzQYF4TgI/GdJ0pm5gBHd37N9TvRRWi"
+              - column:
+                  name: email
+                  value: admin@email.ru
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: "1"
+              - column:
+                  name: role_id
+                  value: "1"
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: "1"
+              - column:
+                  name: role_id
+                  value: "2"
